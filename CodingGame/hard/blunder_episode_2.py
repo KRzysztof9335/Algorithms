@@ -1,4 +1,4 @@
-# https://www.codingame.com/training/hard/blunder-episode-2
+""" https://www.codingame.com/training/hard/blunder-episode-2"""
 from dataclasses import dataclass
 from typing import Dict
 
