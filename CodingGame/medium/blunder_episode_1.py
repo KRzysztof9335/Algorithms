@@ -2,44 +2,43 @@
 from typing import Dict, List
 import sys
 
-def printd(msg):
+def printd(msg: str):
     print(f"DEBUG: {msg}", file=sys.stderr, flush=True)
 
 DIRECTIONS = ["S", "E", "N", "W"]
 DIRECTIONS_MAP = {"S": "SOUTH", "E": "EAST", "N": "NORTH", "W": "WEST"}
 
+
 class Point:
-    def __init__(self, x = 0, y = 0):
+    def __init__(self, x: int = 0, y: int = 0):
         self.x = x
         self.y = y
 
-    def __str__(self):
-        printd(f"{self.x} {self.y}")
-
-    def __eq__(self, other):
+    def __eq__(self, other: 'Point') -> bool:  # type: ignore
         return self.x == other.x and self.y == other.y
+
 
 class CityMap:
 
     def __init__(self):
-        self.grid = []
+        self.grid: List[str] = []
         self.teleports: Dict[int, Point] = {}
         self.booth = Point()
 
-    def add_row(self, row: List[str]):
+    def add_row(self, row: str):
         self.grid.append(row)
 
-    def set_booth(self, x, y):
+    def set_booth(self, x: int, y: int):
         self.booth.x = x
         self.booth.y = y
 
-    def add_teleport(self, x, y):
+    def add_teleport(self, x: int, y: int):
         if not self.teleports:
             self.teleports[0] = Point(x, y)
         else:
             self.teleports[1] = Point(x, y)
 
-    def get_teleport(self, x, y) -> Point:
+    def get_teleport(self, x: int, y: int) -> Point:
         "For given x, y return point where teleport leads to"
         idx_match = 0
         for idx, teleport in self.teleports.items():
@@ -63,9 +62,9 @@ class Blunder:
 
         self.move_idx: int = 0
         self.moves = []
-        self.visited = {}
+        self.visited: Dict[str, int] = {}
 
-    def set_position(self, x, y):
+    def set_position(self, x: int, y: int):
         self.pos.x = x
         self.pos.y = y
 
@@ -125,7 +124,7 @@ class Blunder:
             self.move_idx += move_direction
 
 
-    def get_next_point(self, direction) -> Point:
+    def get_next_point(self, direction: str) -> Point:
         if direction == "S": return Point(self.pos.x, self.pos.y + 1)
         if direction == "N": return Point(self.pos.x, self.pos.y - 1)
         if direction == "E": return Point(self.pos.x + 1, self.pos.y)
@@ -140,7 +139,7 @@ class Blunder:
             if not self.beer_mode:
                 return False
             else:
-                city_map.grid[point.y] = city_map.grid[point.y][0:point.x] + ' ' + city_map.grid[point.y][point.x + 1:]
+                city_map.grid[point.y] = city_map.grid[point.y][0:point.x] + ' ' + city_map.grid[point.y][point.x + 1:]  # type:ignore
                 self.reset_moves_loop_count()
                 return True
         return True

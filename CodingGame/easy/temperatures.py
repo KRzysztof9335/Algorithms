@@ -1,7 +1,7 @@
-# Auto-generated code below aims at helping you parse
-# the standard input according to the problem statement.
+"""https://www.codingame.com/training/easy/temperatures"""
+from typing import List
 
-temperatures = []
+temperatures: List[int] = []
 n = int(input())  # the number of temperatures to analyse
 for i in input().split():
     temperatures.append(int(i))

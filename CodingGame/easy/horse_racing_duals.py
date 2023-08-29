@@ -1,7 +1,8 @@
-n = int(input())
+"""https://www.codingame.com/training/easy/horse-racing-duals"""
+from typing import List
 
-horses_strength = []
-for i in range(n):
+horses_strength: List[int] = []
+for _ in range(int(input())):
     horses_strength.append(int(input()))
 horses_strength = sorted(horses_strength)
 
