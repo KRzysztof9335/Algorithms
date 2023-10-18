@@ -78,7 +78,7 @@ class Blunder:
         if city_map.grid[self.pos.y][self.pos.x] == " " or \
            city_map.grid[self.pos.y][self.pos.x] == "@":
             self.handle_basic_move(city_map)
-        
+
         # Handle direction modifier
         elif city_map.grid[self.pos.y][self.pos.x] in "NSEW":
             self.move_idx = DIRECTIONS.index(city_map.grid[self.pos.y][self.pos.x])
@@ -134,7 +134,7 @@ class Blunder:
         # printd(f"Checking if can go to {point.x} {point.y} - map is '{city_map.grid[point.y][point.x]}'")
         if city_map.grid[point.y][point.x] == "#":
             return False
-        
+
         if city_map.grid[point.y][point.x] == "X":
             if not self.beer_mode:
                 return False
@@ -165,18 +165,18 @@ class Blunder:
 
 
 def get_input(city_map: CityMap, blunder: Blunder):
-    
+
     l, _ = [int(i) for i in input().split()]
     for y in range(l):
         row = input()
         city_map.grid.append(row)
 
-        for x, caracter in enumerate(row):
-            if caracter == "@":
+        for x, character in enumerate(row):
+            if character == "@":
                 blunder.set_position(x, y)
-            elif caracter == "$":
+            elif character == "$":
                 city_map.set_booth(x, y)
-            elif caracter == "T":
+            elif character == "T":
                 city_map.add_teleport(x, y)
 
 
