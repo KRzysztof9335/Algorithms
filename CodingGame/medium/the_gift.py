@@ -1,6 +1,7 @@
 "https://www.codingame.com/ide/puzzle/the-gift"
 from typing import List, Tuple
 
+
 def get_input() -> Tuple[int, List[int]]:
     "Collect input"
     contributors_number = int(input())
@@ -14,7 +15,7 @@ def get_input() -> Tuple[int, List[int]]:
 def solution():
     "Calculate solution"
     to_contribute, budgets = get_input()
-    budgets: List[int] = sorted(budgets, reverse = True)
+    budgets: List[int] = sorted(budgets, reverse=True)
     to_contribute_remaining = to_contribute
 
     contributions: List[int] = []
@@ -31,5 +32,6 @@ def solution():
         budgets.pop()
 
     return 'IMPOSSIBLE' if to_contribute_remaining else '\n'.join(map(str, contributions))
+
 
 print(solution())

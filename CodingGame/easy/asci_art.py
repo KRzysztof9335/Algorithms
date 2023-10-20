@@ -17,9 +17,10 @@ def solution():
             letter_idx = 26
             if letter.isalpha():
                 letter_idx = ord(letter.capitalize()) - 65
-            row_idx_start = letter_idx*L
-            row_idx_end   = letter_idx*L + L
+            row_idx_start = letter_idx * L
+            row_idx_end = letter_idx * L + L
             row_string += "".join(T[row][row_idx_start:row_idx_end])
         print(''.join(row_string))
+
 
 solution()

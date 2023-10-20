@@ -5,6 +5,7 @@ from typing import Dict
 # Auto-generated code below aims at helping you parse
 # the standard input according to the problem statement.
 
+
 @dataclass
 class Room:
     "left and right door are ids to next rooms. If exit then value set to -1"
@@ -13,26 +14,26 @@ class Room:
     left: int
     right: int
 
+
 def get_input() -> Dict[int, Room]:
-    rooms = {}
-    n = int(input())
-    for _ in range(n):
+    rooms: Dict[int, Room] = {}
+    for _ in range(int(input())):
         room = input().split()
         room_id = int(room[0])
         value = int(room[1])
-        d1 = -1 if "E" in room[2] else int(room[2])
-        d2 = -1 if "E" in room[3] else int(room[3])
-        rooms[room_id] = Room(int(room_id), value, d1, d2)
+        door_1 = -1 if "E" in room[2] else int(room[2])
+        door_2 = -1 if "E" in room[3] else int(room[3])
+        rooms[room_id] = Room(int(room_id), value, door_1, door_2)
     return rooms
 
 
-def solution():
+def solution() -> int:
     rooms = get_input()
     return traverse(rooms, {}, rooms[0])
 
 
-def traverse(rooms: Dict[int, Room], visited: Dict[int, int], room: Room):
-    amount = 0
+def traverse(rooms: Dict[int, Room], visited: Dict[int, int], room: Room) -> int:
+    amount: int = 0
 
     if room.id in visited:
         return visited[room.id]
@@ -52,5 +53,6 @@ def traverse(rooms: Dict[int, Room], visited: Dict[int, int], room: Room):
 
     visited[room.id] = amount
     return amount
+
 
 print(solution())

@@ -13,4 +13,4 @@ else:
     if temp_min in temperatures:
         print(temp_min)
     else:
-        print(-1*temp_min)
+        print(-1 * temp_min)

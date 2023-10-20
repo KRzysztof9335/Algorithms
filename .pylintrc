@@ -49,6 +49,9 @@ suggestion-mode=yes
 # active Python interpreter and may run arbitrary code.
 unsafe-load-any-extension=no
 
+disable=
+    C0115, # missing-class-docstring
+    C0116, # missing-function-docstring
 
 [MESSAGES CONTROL]
 
@@ -373,6 +376,7 @@ good-names=i,
            k,
            ex,
            Run,
+           id,
            _
 
 # Good variable names regexes, separated by a comma. If names match any regex,
@@ -509,7 +513,7 @@ logging-modules=logging
 max-args=5
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=7
+max-attributes=10
 
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=5
