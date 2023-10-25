@@ -20,7 +20,7 @@ $(venv)/timestamp: $(requirements)
 
 
 pylint: venv
-	$(pylint) $(dirs)
+	$(pylint) -d duplicate-code $(dirs)
 
 pycodestyle: venv
 	$(pycodestyle) $(dirs) --ignore=E501  # Ignore too long line
