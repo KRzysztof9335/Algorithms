@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "dijkstras",
         "kadanes"
     ],
     "python.testing.pytestArgs": [
